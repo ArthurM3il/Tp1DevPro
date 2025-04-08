@@ -23,7 +23,7 @@
 -  docker run -d -p 8080:80 --name TpUnCopie nginx : Pour créer un nouveau conteneur
 -  docker cp index.html TpUnCopie:/usr/share/nginx/html/index.html  : Pour copier le fichier html dans le conteneur actuel
 
-# Build une image
+# 4 Build une image
 
 ## a) Créer une image à l'aide d'un Dockerfile
 - nano Dockerfile : pour créer le fichier et y insérer les instructions suivante :
@@ -36,6 +36,27 @@ EXPOSE 80
 
 ## b) Exécuter la nouvelle image
 - docker run -d -p 8080:80 --name image-container tp-un-dockerfile : Pour créer le container à partir de l'image crée précedemment<img width="1393" alt="Capture d’écran 2025-04-08 à 17 01 16" src="https://github.com/user-attachments/assets/d0214fa2-5442-442e-899f-7c6e41a2cf2f" />
+
+## c) 
+
+# 5 Base de données dans conteneur
+
+## a) Récuperer les images mysql et phpmyadmin
+- Docker pull mysql : pour récupérer l'image de mysql
+- Docker pull phpmyadmin : pour récupérer l'image de phpmyadmin
+
+## b) Exécuter les deux conteneurs, ajouter une table et quelques enregistrements
+- docker network create reseauTp1 : La création d'un réseau permettra de faire communiquer les deux conteneurs plus facilement sans exposer le port
+mysql, je ne sais pas si c'est une bonne pratique mais elle ne me paraissait pas si idiote.
+- docker run --name mon-mysql --network reseauTp1 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=base_tp1  -d mysql : Pour créer le conteneur mysql
+sur le réseau créé juste avant
+- docker run --name phpmyadminTp1 --network reseauTp1 -e PMA_HOST=mon-mysql -p 8080:80 -d phpmyadmin : Pour créer le conteneur phpmyadmin
+sur le même réseau que mysql en exposant le port html pour y avoir accès depuis localhost
+- À noter que la création d'un réseau évite d'utiliser --link qui, d'après ce que j'ai trouvé, est déprécié.
+- docker exec -it mon-mysql mysql -u root -p : Pour administrer la BDD depuis docker en cli
+- create table users ( id INT AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(100) ); : Pour créer une talbe user en sql
+- INSERT INTO users (nom) VALUES ('moreno arthur'); : Pour ajouter un enregistrement
+- ![alt text](image.png)
 
 
 
