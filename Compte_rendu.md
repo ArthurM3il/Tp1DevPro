@@ -56,7 +56,8 @@ sur le même réseau que mysql en exposant le port html pour y avoir accès depu
 - docker exec -it mon-mysql mysql -u root -p : Pour administrer la BDD depuis docker en cli
 - create table users ( id INT AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(100) ); : Pour créer une talbe user en sql
 - INSERT INTO users (nom) VALUES ('moreno arthur'); : Pour ajouter un enregistrement
-- ![alt text](image.png)
+- <img width="208" alt="Capture d’écran 2025-04-08 à 20 46 02" src="https://github.com/user-attachments/assets/a82d3b8d-a5d0-45ff-a829-5d7b1e94aaea" />
+
 
 
 
