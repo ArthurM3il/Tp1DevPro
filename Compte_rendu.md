@@ -48,7 +48,7 @@ EXPOSE 80
 
 ## b) Exécuter les deux conteneurs, ajouter une table et quelques enregistrements
 - docker network create reseauTp1 : La création d'un réseau permettra de faire communiquer les deux conteneurs plus facilement sans exposer le port
-mysql, je ne sais pas si c'est une bonne pratique mais elle ne me paraissait pas si idiote.
+mysql et sans utilisé --link qui est considéré depuis quelques temps comme déprécié.
 - docker run --name mon-mysql --network reseauTp1 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=base_tp1  -d mysql : Pour créer le conteneur mysql
 sur le réseau créé juste avant
 - docker run --name phpmyadminTp1 --network reseauTp1 -e PMA_HOST=mon-mysql -p 8080:80 -d phpmyadmin : Pour créer le conteneur phpmyadmin
