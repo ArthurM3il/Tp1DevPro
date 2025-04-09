@@ -37,7 +37,8 @@ EXPOSE 80
 ## b) Exécuter la nouvelle image
 - docker run -d -p 8080:80 --name image-container tp-un-dockerfile : Pour créer le container à partir de l'image crée précedemment<img width="1393" alt="Capture d’écran 2025-04-08 à 17 01 16" src="https://github.com/user-attachments/assets/d0214fa2-5442-442e-899f-7c6e41a2cf2f" />
 
-## c) 
+## c) Différence entre les deux procédures
+- La procédure 4 permet de gérer d'une meilleure manière l'exécution d'une image et donc harmoniser la création entre différents collaborateurs par exemple en plus d'être totalement personnalisable. Le seul inconvénient serait le temps de préparation du Dockerfile là ou avec la procédure 3 il suffit simplement d'exécuter une ligne de commande.
 
 # 5 Base de données dans conteneur
 
